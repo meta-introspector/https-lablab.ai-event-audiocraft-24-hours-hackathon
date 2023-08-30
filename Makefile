@@ -11,7 +11,7 @@ build:
 	pip install --editable .
 
 run:
-	$(CLI_NAME) run
+	$(CLI_NAME) read --input ../encodec/samples/JSBach-CrabCanononaMoebiusStrip-xUHQ2ybTejU.txt >../encodec/samples/JSBach-CrabCanononaMoebiusStrip-xUHQ2ybTejU.emoji
 
 submit:
 	$(CLI_NAME) submit
