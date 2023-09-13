@@ -1,0 +1,39 @@
+import discord
+from discord.ext import commands
+
+# Initialize bot
+bot = commands.Bot(command_prefix='!')
+
+# Event handler for when the bot is ready
+@bot.event
+async def on_ready():
+    print(f'Logged in as {bot.user.name}')
+
+# Event handler for when a message is sent
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return  # Ignore messages from the bot itself
+    
+    # Archive the message (you can save it to a file or database)
+    archive_message(message)
+
+    # Check if the message is a question and provide an answer
+    if message.content.endswith('?'):
+        response = answer_question(message.content)
+        await message.channel.send(response)
+
+    await bot.process_commands(message)
+
+# Function to archive messages (replace with your preferred implementation)
+def archive_message(message):
+    # Implement message archiving logic here
+    pass
+
+# Function to answer questions (replace with your preferred implementation)
+def answer_question(question):
+    # Implement question answering logic here
+    return "I don't have an answer to that question."
+
+# Start the bot with your token
+bot.run('YOUR_BOT_TOKEN')
